@@ -4,7 +4,33 @@
   <title>Admin Panel - AR Furniture</title>
 </head>
 <body>
-  <h2>Admin Panel</h2>
-  <p>Edit your website content here later.</p>
+  <h2>Admin Panel (Editable)</h2>
+  <p>Change your website content here. Changes are saved automatically.</p>
+
+  <label>Business Name</label><br>
+  <input id="brand" placeholder="AR Furniture"><br><br>
+
+  <label>Tagline</label><br>
+  <input id="tagline" placeholder="Luxury Office Furniture & Home Sofas"><br><br>
+
+  <label>About Text</label><br>
+  <textarea id="about" rows="4" placeholder="About your business"></textarea><br><br>
+
+  <label>Phone</label><br>
+  <input id="phone" placeholder="+92-XXX-XXXXXXX"><br><br>
+
+  <button onclick="saveData()">Save Changes</button>
+
+  <script>
+    const fields = ['brand','tagline','about','phone'];
+    fields.forEach(f=>{
+      if(localStorage.getItem(f))
+        document.getElementById(f).value = localStorage.getItem(f);
+    });
+    function saveData(){
+      fields.forEach(f=>localStorage.setItem(f, document.getElementById(f).value));
+      alert('Saved! Refresh homepage to see changes.');
+    }
+  </script>
 </body>
 </html>
